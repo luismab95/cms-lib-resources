@@ -1,4 +1,4 @@
-import { RandomEnum } from "../enums/random.enum.js";
+import { RandomEnum } from '../enums/random.enum.js';
 
 export function randomCharacters(
   option: 'NUMBER' | 'LETTER' | 'COMBINED',
@@ -28,4 +28,38 @@ export function randomCharacters(
   } catch (error) {
     return 'q0_1234_ab2q';
   }
+}
+
+export function generateRandomPassword(
+  length: number,
+  useMayus: boolean,
+  useNumber: boolean,
+  useSpecial: boolean,
+) {
+  let caracteres = RandomEnum.MINUS as string;
+  let password = '';
+
+  if (useMayus) caracteres += RandomEnum.MAYUS;
+  if (useNumber) caracteres += RandomEnum.NUMBER;
+  if (useSpecial) caracteres += RandomEnum.SPECIAL;
+
+  const indexMayus = Math.floor(Math.random() * RandomEnum.MAYUS.length);
+  const indexNumber = Math.floor(Math.random() * RandomEnum.NUMBER.length);
+  const indexSpecial = Math.floor(Math.random() * RandomEnum.SPECIAL.length);
+
+  password += RandomEnum.MAYUS.charAt(indexMayus);
+  password += RandomEnum.NUMBER.charAt(indexNumber);
+  password += RandomEnum.SPECIAL.charAt(indexSpecial);
+
+  for (let i = 0; i < length - 3; i++) {
+    const index = Math.floor(Math.random() * caracteres.length);
+    password += caracteres.charAt(index);
+  }
+
+  password = password
+    .split('')
+    .sort(() => Math.random() - 0.5)
+    .join('');
+
+  return password;
 }
