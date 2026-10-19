@@ -17,7 +17,7 @@
   <a href="https://pnpm.io/">
     <img src="https://img.shields.io/badge/package%20manager-pnpm-F69220.svg" alt="pnpm" />
   </a>
-  <a href="https://github.com/luismab95/cms-ms-auth/blob/main/LICENSE">
+  <a href="https://github.com/luismab95/cms-lib-resources/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
   </a>
 </p>
@@ -69,8 +69,8 @@ pnpm --version
 Clone the repository:
 
 ```bash
-git clone https://github.com/luismab95/cms-lib-database.git
-cd cms-lib-database
+git clone https://github.com/luismab95/cms-lib-resources.git
+cd cms-lib-resources
 ```
 
 Install the dependencies:
@@ -186,7 +186,7 @@ pnpm install --frozen-lockfile
 Copy the generated archive to the root directory of the consuming microservice and install it using pnpm:
 
 ```bash
-pnpm add ./cms-lib-resourcesd-0.0.1.tgz
+pnpm add ./cms-lib-resources-0.0.1.tgz
 ```
 
 Import the public exports from the package:
@@ -205,7 +205,7 @@ When publishing a new version, update the library version, rebuild the package, 
 - [NestJS Official Website](https://nestjs.com)
 - [pnpm Documentation](https://pnpm.io)
 - [Node.js Documentation](https://nodejs.org/docs)
-- [CMS-MS-AUTH Repository](https://github.com/luismab95/cms-lib-database)
+- [CMS-LIB-RESOURCES Repository](https://github.com/luismab95/cms-lib-resources)
 
 ## License
 

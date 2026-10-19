@@ -4,4 +4,6 @@ export enum ColumnsEnum {
   path = 'path',
   uuid = 'uuid',
   code = 'código',
+  ref = 'referencia',
+  lang = 'idioma',
 }
