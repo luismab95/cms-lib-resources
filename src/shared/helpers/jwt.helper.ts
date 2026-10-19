@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { ERR_401 } from '../constants/message.constants.js';
 import { config } from '../environments/load-env.js';
 
-export interface TokenInterface {
+export interface TokenI {
   userId: number;
   roleId: number;
   sessionId?: number;
@@ -16,15 +16,15 @@ export interface TokenInterface {
 
 const { jwtSecretKey, expiresIn } = config.server;
 
-export function generateToken(payload: TokenInterface): string {
+export function generateToken(payload: TokenI): string {
   return jwt.sign(payload, jwtSecretKey!, { expiresIn });
 }
 
-export function generateRefreshToken(payload: TokenInterface): string {
+export function generateRefreshToken(payload: TokenI): string {
   return jwt.sign(payload, jwtSecretKey!, { expiresIn: '30d' });
 }
 
-export function generateForgotPassword(payload: TokenInterface): string {
+export function generateForgotPassword(payload: TokenI): string {
   return jwt.sign(payload, jwtSecretKey!, { expiresIn: '10m' });
 }
 

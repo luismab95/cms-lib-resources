@@ -6,7 +6,7 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { ERR_401 } from '@shared/constants/message.constants.js';
-import { verifyToken } from '@shared/helpers/jwt.helper.js';
+import { TokenI, verifyToken } from '@shared/helpers/jwt.helper.js';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -20,7 +20,16 @@ export class JwtGuard implements CanActivate {
       throw new HttpException(ERR_401, HttpStatus.UNAUTHORIZED);
     }
     try {
-      verifyToken(jwtToken);
+      const payload = verifyToken(jwtToken) as TokenI;
+      Object.assign(request, {
+        userId: payload.userId,
+        roleId: payload.roleId,
+        email: payload.email,
+        sessionId: payload.sessionId,
+        firstname: payload.firstname,
+        lastname: payload.lastname,
+      });
+
       return true;
     } catch (err) {
       throw new HttpException(ERR_401, HttpStatus.UNAUTHORIZED);
