@@ -13,7 +13,7 @@ export async function getParameter(
     );
   }
 
-  if (parameter.private) {
+  if (parameter.private && parameter.value !== '') {
     parameter.value = decryptedData(parameter.value);
   }
   return parameter.value;
